@@ -45,7 +45,7 @@ def process_sniffed_packets(packet):
                 sniffed.close
             
 
-x = input("\n[+]Enter The Interface To Sniff  - ")
+x = input("\n[+]Enter The Interface To Sniff [Wi-Fi/Ethernet]  - ")
 global y
 y = input("\n[+]Press Y/N To Store Captured Websites And Passwords  - ")
 print(f"\n\n[+]Now Sniffing {x}\n")
