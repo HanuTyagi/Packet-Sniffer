@@ -1,6 +1,9 @@
 # Packet Sniffer
 A packet sniffer is a tool that can capture and analyze network traffic. This project is a packet sniffer that can capture and display information about network packets, including the source and destination IP addresses, the protocol, and the packet payload.
 
+# Project Introduction
+This Project is build uses `Scapy` framework. To capture http requests and login credentials the project uses `Sniff()` function from `Scapy` framework, All the captured packets are filter and only the http URL and login credentials are displayed.
+
 # Installation
 To use the packet sniffer, you will need to have Python 3 and the Scapy library installed on your system. You can install Scapy using pip:
 
