@@ -12,7 +12,7 @@ To use the packet sniffer, you will need to have Python 3 and the Scapy library 
 # Usage
 To start the packet sniffer, simply run the script with Python:
 
-`python packet_sniffer.py`
+`python sniffer.py`
 
 The packet sniffer will begin capturing packets and displaying information about them in the terminal. You can press `CTRL+C` to stop the packet sniffer.
 
